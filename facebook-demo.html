@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'none'; form-action 'none'; base-uri 'none'">
+  <title>Facebook 스타일 로그인 데모</title>
+  <style>
+    :root { font-family: Helvetica, Arial, sans-serif; color: #1c1e21; background: #fff; }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    a { color: #0866ff; text-decoration: none; }
+    .demo-label { padding: 12px; color: #606770; background: #fff8e1; font-size: 13px; text-align: center; }
+    .hero { min-height: 680px; background: #f2f4f7; }
+    .hero-inner { width: min(980px, calc(100% - 40px)); margin: 0 auto; padding: 132px 0 112px; display: flex; align-items: flex-start; justify-content: space-between; gap: 32px; }
+    .brand { width: 548px; padding-top: 64px; }
+    .wordmark { display: block; margin: 0 0 10px -2px; color: #0866ff; font-size: 60px; font-weight: 700; line-height: 1; letter-spacing: -3px; }
+    .brand p { max-width: 500px; margin: 0; font-size: 28px; line-height: 1.25; }
+    .login-area { width: 396px; flex: 0 0 396px; }
+    .card { padding: 16px; border-radius: 8px; background: #fff; box-shadow: 0 2px 4px rgba(0,0,0,.1), 0 8px 18px rgba(0,0,0,.1); text-align: center; }
+    .field { display: block; width: 100%; height: 52px; margin: 0 0 12px; padding: 14px 16px; border: 1px solid #dddfe2; border-radius: 6px; outline: none; background: #fff; color: #1c1e21; font: 17px Helvetica, Arial, sans-serif; }
+    .field::placeholder { color: #90949c; }
+    .field:focus { border-color: #0866ff; box-shadow: 0 0 0 2px #e7f3ff; }
+    button { border: 0; cursor: pointer; }
+    .login-button { display: grid; place-items: center; width: 100%; height: 48px; margin-top: 4px; border-radius: 6px; background: #0866ff; color: #fff; font-size: 20px; font-weight: 700; text-decoration: none; }
+    .login-button:disabled { cursor: default; opacity: .65; }
+    .forgot { display: inline-block; margin: 17px 0 20px; background: none; color: #0866ff; font-size: 14px; }
+    .divider { height: 1px; background: #dadde1; }
+    .signup-button { min-height: 48px; margin: 24px 0 8px; padding: 0 16px; border-radius: 6px; background: #42b72a; color: #fff; font-size: 17px; font-weight: 700; }
+    .message { min-height: 20px; margin: 12px 0 0; color: #606770; font-size: 13px; }
+    .footer { width: min(980px, calc(100% - 40px)); margin: 0 auto; padding: 28px 0 24px; color: #737373; font-size: 12px; }
+    @media (max-width: 900px) { .hero { min-height: 0; } .hero-inner { width: min(396px, calc(100% - 32px)); flex-direction: column; align-items: center; padding: 40px 0 70px; } .brand { width: 100%; padding-top: 0; text-align: center; } .wordmark { margin: 0 0 12px; font-size: 54px; } .brand p { font-size: 20px; } .login-area { width: 100%; flex-basis: auto; } }
+  </style>
+</head>
+<body>
+    <div class="hero-inner">
+      <section class="brand" aria-label="서비스 소개">
+        <span class="wordmark">facebook</span>
+        <p>친구, 가족, 지인들과 함께 이야기를 나눠보세요.</p>
+      </section>
+      <section class="login-area" aria-label="로컬 로그인 데모">
+        <form class="card" id="facebook-login" autocomplete="off">
+          <input class="field" id="facebook-username" type="text" placeholder="이메일 또는 전화번호" autocomplete="off" aria-label="이메일 또는 전화번호" required>
+          <input class="field" id="facebook-password" type="password" placeholder="비밀번호" autocomplete="new-password" aria-label="비밀번호" minlength="6" required>
+          <button class="login-button" id="facebook-submit" type="submit" disabled>로그인</button>
+          <button class="forgot" type="button">비밀번호를 잊으셨나요?</button>
+          <div class="divider" aria-hidden="true"></div>
+          <button class="signup-button" type="button">새 계정 만들기</button>
+          <p class="message" id="facebook-message" role="status" hidden></p>
+        </form>
+      </section>
+    </div>
+  </main>
+  <script src="facebook-demo.js"></script>
+</body>
+</html>
